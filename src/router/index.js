@@ -5,6 +5,7 @@ import LatestNews from '@/components/LatestNews'
 import Mine from '@/components/Mine'
 import Search from '@/components/Search'
 import Add from "@/components/Add";
+import Register from '../components/Register'
 
 
 
@@ -36,6 +37,11 @@ export default new Router({
       path: '/add',
       name: 'add',
       component: Add
+    },
+    {
+      path: '/register',
+      name: 'register',
+      component: Register
     },
   ]
 })

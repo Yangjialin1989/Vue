@@ -1,7 +1,8 @@
 <template>
 <div>
-  <h3>当前最新的count值为：</h3>
-  <button>+1</button>
+  <h3>当前最新的count值为：{{$store.state.count}}</h3>
+  <button @click='addHandle'>+1</button>
+  <button @click='addHandleAsync'>+ async</button>
 </div>
 </template>
 
@@ -11,6 +12,16 @@ export default {
   data(){
     return {
 
+    }
+  },
+  methods:{
+    addHandle(){
+      //commit专门触发mutations
+      this.$store.commit('add',2)
+    },
+    addHandleAsync(){
+      //dispatch专门触发actions
+      this.$store.dispatch('addAsync')
     }
   }
 }

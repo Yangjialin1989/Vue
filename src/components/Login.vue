@@ -34,36 +34,36 @@
     <div class="right">
       <div class="text3">
         <span>账号登录</span>
-        <van-icon v-on:click="close1" style="float:right;" name="cross" color="	#C0C0C0" />
+        <van-icon v-on:click="close1" style="float:right;margin-right: 0.15rem;margin-top: -0.15rem;" name="cross" color="	#C0C0C0" />
       </div>
       <van-form validate-trigger="onSubmit" @submit="onSubmit" style="margin-left: 0.1rem;">
-        <van-field style="font-size: 0.2rem;"
+        <van-field style="font-size: 0.2rem;height:35px;"
           v-model="username"
           name="用户名"
 
-          placeholder="用户名"
+
+          placeholder='请填写用户名'
           :rules="[{ required: true, message: '请填写用户名' }]"
         />
-        <van-field style="font-size: 0.2rem;"
+        <van-field style="font-size: 0.2rem;height:35px;"
           v-model="password"
           type="password"
           name="密码"
 
-          placeholder="密码"
-          :rules="[{ required: true, message: '请填写密码' }]"
+          placeholder='请输入密码'
+          :rules="[{ required: true,message :'请输入密码' }]"
         />
         <div style="float: right;font-size:0.2rem;">
           <span><a href="">忘记密码？</a></span>
         </div>
-        <div style="margin: 16px;width: 60px;height:30px;">
-          <van-button  size="mini" round block type="info" native-type="submit">提交</van-button>
+        <div style="margin-left: 0.35rem;margin-top:0.6rem;width: 4.3rem;height:0.6rem;">
+          <van-button  size="mini"  block type="info" native-type="submit">提交</van-button>
         </div>
       </van-form>
     </div>
     <div class="bottom">
-      <div class="text">立即注册</div>
+      <div @click='pushRegester' class="text">立即注册</div>
     </div>
-
   </div>
 </template>
 
@@ -73,12 +73,18 @@ export default {
   data(){
     return{
       username:'',
-      password:''
+      password:'',
+
+
     }
   },
   methods:{
     close1(){
-      this.show = false;
+      this.$store.commit('topDialogClose')
+    },
+    pushRegester(){
+      this.$router.push({name:'register',params:{id:'1'}})
+      this.$store.state.TopDialogFlag = false;
     }
   }
 }

@@ -10,11 +10,11 @@
         />
       </template>
       <template #right>
-        <van-button  v-on:click="dialog" class="login" type="info" size="small">登录</van-button>
+        <van-button  @click="dialog" class="login" type="info" size="small">登录</van-button>
       </template>
     </van-nav-bar>
 
-    <van-dialog class="dialog"  v-model="show" show-cancel-button>
+    <van-dialog class="dialog"  v-model="$store.state.TopDialogFlag"  closeOnClickOverlay>
       <Login></Login>
     </van-dialog>
 
@@ -30,13 +30,18 @@ export default {
   },
   data(){
     return {
-      show:false
+
     }
   },
   methods:{
     dialog:function(){
-      this.show = true;
+      this.$store.commit('topDialogTigger')
     }
+  },
+  mounted() {
+    this.dialog.alert({
+      showConfirmButton : false,
+    })
   }
 
 }
@@ -51,7 +56,7 @@ export default {
   }
   .dialog{
     width: 10rem;
-    height:6rem;
+    height:5rem;
 
   }
 </style>
